@@ -2,7 +2,8 @@ import dotenv from "dotenv";
 import express from "express";
 import { createProxyMiddleware } from "http-proxy-middleware";
 
-dotenv.config();
+const env = process.env.NODE_ENV || "local"; 
+dotenv.config({ path: `.env.${env}` });
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -27,5 +28,5 @@ app.use(
 );
 
 app.listen(PORT, () => {
-  console.log(`API Gateway is running on port ${PORT}`);
+  console.log(`API Gateway is running on port ${PORT} on ${env} environment`);
 });

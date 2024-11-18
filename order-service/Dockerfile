@@ -11,6 +11,9 @@ RUN npm install
 # Copy source code
 COPY . .
 
+# Set NODE_ENV to 'docker' for containerized environment
+ENV NODE_ENV=docker
+
 # Build TypeScript files
 RUN npm run build
 
